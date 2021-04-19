@@ -4,5 +4,28 @@
         <name>WeChatApi</name>
     </assembly>
     <members>
+        <member name="T:WeChatApi.WeChatController">
+            <summary>
+            微信控制器
+            </summary>
+        </member>
+        <member name="M:WeChatApi.WeChatController.AddRepair(Model.WeChat.RepairAddDto)">
+            <summary>
+            添加报修
+            </summary>
+            <param name="RepairDto">参数</param>      
+        </member>
+        <member name="M:WeChatApi.WeChatController.QueryRepairList(Model.WeChat.RepairListDto)">
+            <summary>
+            报修列表
+            </summary>
+            <param name="RepairDto">参数</param>      
+        </member>
+        <member name="M:WeChatApi.WeChatController.GetRepairDetail(System.String)">
+            <summary>
+            报修详细
+            </summary>
+            <param name="ServiceID">参数</param>      
+        </member>
     </members>
 </doc>

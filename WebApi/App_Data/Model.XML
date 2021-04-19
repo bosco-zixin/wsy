@@ -49,5 +49,155 @@
             
             </summary>
         </member>
+        <member name="T:Model.ResInfo">
+            <summary>
+            错误定义实体类
+            </summary>
+        </member>
+        <member name="M:Model.ResInfo.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="P:Model.ResInfo.ResCode">
+            <summary>
+            响应代码1:成功-1失败 0:没有满足条件记录
+            </summary>
+        </member>
+        <member name="P:Model.ResInfo.ResMsg">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:Model.ResInfo.ResData">
+            <summary>
+            响应内容
+            </summary>
+        </member>
+        <member name="T:Model.ResDataDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.ResDataDto.Records">
+            <summary>
+            总行数
+            </summary>
+        </member>
+        <member name="P:Model.ResDataDto.Rows">
+            <summary>
+            列表数据
+            </summary>
+        </member>
+        <member name="T:Model.WeChat.RepairAddDto">
+            <summary>
+            添加保修实体
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.AreaID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.NodeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.Address">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.ContactPerson">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.ContactTel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.ServiceNote">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.Picture1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.Picture2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.Picture3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairAddDto.ISFeedback">
+            <summary>
+            是否反馈 0不1电话反馈
+            </summary>
+        </member>
+        <member name="T:Model.WeChat.RepairListDto">
+            <summary>
+            报修列表请求实体
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.ServiceSer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.CreateTimeS">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.CreateTimeE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.ContactPerson">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.ContactTel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.ServiceNote">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.PageIndex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.PageSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.Picture3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.RepairListDto.ISFeedback">
+            <summary>
+            是否反馈 0不1电话反馈
+            </summary>
+        </member>
     </members>
 </doc>
