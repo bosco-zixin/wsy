@@ -1,0 +1,83 @@
+@using System.Web.Http
+@using System.Web.Http.Description
+@using WebApi.Areas.HelpPage.Models
+@using WebApi.Areas.HelpPage.ModelDescriptions
+@model HelpPageApiModel
+
+@{
+    ApiDescription description = Model.ApiDescription;
+}
+<h1>@description.HttpMethod.Method @description.RelativePath.ToLower()</h1>
+
+<div>
+    <p>@description.Documentation</p>
+    <div class="divRequest">
+        <h2>请求</h2>
+        <h3>@Model.RequestDocumentation</h3>
+        @if (Model.RequestModelDescription != null)
+        {
+            @Html.DisplayFor(m => m.RequestModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.RequestModelDescription })
+            @*if (Model.RequestBodyParameters != null)
+            {
+                @Html.DisplayFor(m => m.RequestBodyParameters, "Parameters")
+            }*@
+        }
+        else
+        {
+            @Html.DisplayFor(m => m.UriParameters, "Parameters")
+        }
+
+        @if (Model.SampleRequests.Count > 0)
+        {
+            <h3>示例</h3>
+            @Html.DisplayFor(m => m.SampleRequests, "Samples")
+        }
+    </div>
+    <div class="divResults">
+        <h2>响应</h2>
+        @*<h3>全局错误说明</h3>
+        <div class="results">
+            <table class="help-page-table1">
+                <thead>
+                    <tr><th width="20%">代码</th><th width="80%">描述</th></tr>
+                </thead>
+                <tbody id="codetable1"></tbody>
+            </table>
+        </div>*@
+        <h3>当前接口错误说明</h3>
+        <div class="results">
+            <table class="help-page-table1">
+                <thead>
+                    <tr><th width="20%">代码</th><th width="80%">描述</th></tr>
+                </thead>
+                <tbody id="codetable"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="divResource">
+
+        <h2>返回</h2>
+
+        <h3>当前接口返回值模型与格式范例</h3>
+
+        @if (Model.ResourceDescription != null)
+        {
+            @Html.DisplayFor(m => m.ResourceDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.ResourceDescription })
+            @*if (Model.ResourceProperties != null)
+            {
+                @Html.DisplayFor(m => m.ResourceProperties, "Parameters")
+            }*@
+        }
+        else
+        {
+            <p>None.</p>
+        }
+
+        @if (Model.SampleResponses.Count > 0)
+        {
+            <h3>返回Json格式范例</h3>
+            @Html.DisplayFor(m => m.SampleResponses, "Samples")
+        }
+    </div>
+</div>
+<input type="hidden" id="apiurl" value="@description.RelativePath.ToLower();" />

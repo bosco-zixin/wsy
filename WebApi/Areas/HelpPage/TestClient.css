@@ -1,0 +1,48 @@
+.httpMethod {
+    width: 20%;
+}
+
+.uriPath {
+    width: 70%;
+}
+
+.sampleArea {
+    width: 100%;
+    background: #fbeed5;
+}
+ 
+#testClientButton,.testDivBlock {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 150px;
+    font-size: x-large;
+}
+
+select {
+    margin-top: 10px;
+}
+
+.panel {
+    max-height: 120px;
+    overflow: auto;
+}
+
+    .panel input {
+        width: 200px;
+    }
+
+.uriParameterLabel {
+    width: 100px;
+    float: left;
+    border: none;
+}
+h5, .h5 {
+    font-size: 14px;padding:5px 3px;
+}
+
+.ui-widget-header {
+    background: #ebf3f9;
+    border: 1px solid #c3d9ec;
+    font-weight: bold;
+}

@@ -1,0 +1,98 @@
+@using System.Text.RegularExpressions
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+<link href="~/Areas/HelpPage/TestClient.css" rel="stylesheet" />
+@{var filePattern = @"(jquery-[0-9]+.[0-9]+.[0-9]+.js|jquery-ui-[0-9]+.[0-9]+.[0-9]+.js|knockout-[0-9]+.[0-9]+.[0-9]+.js)";}
+@foreach (var item in Directory.GetFiles(Server.MapPath(@"~/Scripts")).Where(f => Regex.IsMatch(f, filePattern)))
+{
+    <script src="~/Scripts/@Path.GetFileName(item)"></script>
+}
+<link href="~/Scripts/jquery.jsonview.css" rel="stylesheet" />
+<script src="/Scripts/jquery.jsonview.js"></script>
+<script>
+    String.prototype.myReplace = function (f, e) {
+        var reg = new RegExp(f, "g"); //创建正则RegExp对象   
+        return this.replace(reg, e);
+    }
+
+    $(function() {
+        $.ajax({
+            url: "../../areas/helppage/server/ajaxserver.ashx?action=get_output_json&way=post&models=" + $(".uriPath").val(),
+            type: "post",
+            data: null,
+            dataType: "json",
+            success: function (data) {
+                if (data.ResMsg != "wrong") {
+                    $(".divResource #wrapped").JSONView(data);
+                }
+            }
+        });
+
+        if ($('.divRequest #wrapped').text() != "") {
+            if ($('.divRequest #wrapped')) {
+                var JsonRequest = eval('(' + $('.divRequest #wrapped').text() + ')');
+                $(".divRequest #wrapped").JSONView(JsonRequest);
+            }
+        }
+
+        if ($('.divResource #wrapped').text() != "") {
+            if ($('.divResource #wrapped')) {
+                var JsonRequest2 = eval('(' + $('.divResource #wrapped').text() + ')');
+                $(".divResource #wrapped").JSONView(JsonRequest2);
+            }
+        }    
+        var url = "../../areas/helppage/server/ajaxserver.ashx?action=get_wrong_parentlist&type=1&models=";
+
+        $.ajax({
+            url: url,
+            type: "post",
+            data: null,
+            dataType: "json",
+            success: function (data) {
+                var strHtml = '';
+                for (var i in data) {
+                    strHtml += '<tr>' +
+                        '<td>' + data[i].ResCode + '</td>' +
+                        '<td>' + data[i].ResMsg + '</td>';
+                    strHtml += '</tr>';
+                }
+
+                if (strHtml != "")
+                {
+                    $("#codetable1").html(strHtml);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $("#codetable1").html('<tr><td align="center" colspan="2">暂无！</td></tr>');
+            }
+        });
+
+        var url = "../../areas/helppage/server/ajaxserver.ashx?action=get_wrong_list&type=2&models=" + $(".uriPath").val();
+        $.ajax({
+            url: url,
+            type: "post",
+            data: null,
+            dataType: "json",
+            success: function (data) {
+                var strHtml = '';
+                for (var i in data) {
+                    strHtml += '<tr>' +
+                        '<td>' + data[i].ResCode + '</td>' +
+                        '<td>' + data[i].ResMsg + '</td>';
+                    strHtml += '</tr>';
+                }
+
+                if (strHtml != "") {
+                    $("#codetable").html(strHtml);
+                }
+                else {
+                    $("#codetable").html('<tr><td align="center" colspan="2">暂无！</td></tr>');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $("#codetable").html('<tr><td align="center" colspan="2">暂无！</td></tr>');
+            }
+        });
+    });
+</script>
+
+<script src="~/Scripts/WebApiTestClient.js" defer="defer"></script>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Model</name>
+    </assembly>
+    <members>
+        <member name="F:Model.ConfigItem.StoreConnString">
+            <summary>
+            中间库连接字符串
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.TrdConneString">
+            <summary>
+            三方库连接字符串
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.WeChatMainString">
+            <summary>
+            微信数据库链接字符串
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.ReadingUrl">
+            <summary>
+            集抄系统接口地址
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.FileUrl">
+            <summary>
+            文件服务器地址
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.BaseUrl">
+            <summary>
+            Base平台
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.TrdUrl">
+            <summary>
+            三方接口地址
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.ResponerMethod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Model.ConfigItem.DepatrMethod">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

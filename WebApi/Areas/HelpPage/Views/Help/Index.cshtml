@@ -1,0 +1,74 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using WebApi.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "智慧水务管理系统——接口文档";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>  <p>版本号：@ViewBag.Version</p>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper" style="">
+            <p style="float:left;margin-bottom:-10px;line-height:30px">
+                API接口目录
+            </p><span style="float:right"><input type="checkbox" id="alls"><label class="option">全部收起</label></span>
+        </div>
+        <div style="clear:both"></div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+        }
+    </section>
+</div>
+<script>
+    $(function () {
+        $("#Account").hide().next().hide();
+        $("#Values").hide().next().hide();
+        $('.api-name .sp').each(function (i, elem) {
+            if ($(this).text() == "GET")
+                $(this).css("background-color", "#468847");
+        });
+
+        $(".main-content h2").bind('click', function () {
+            if ($(this).next().is(":hidden")) {
+                $(this).next().show();
+                //$(this).find("#view_details").text("收起详情");
+                $(this).find(".fa").removeClass("to_bottom").addClass("to_top");
+            }
+            else {
+                $(this).next().hide();
+                //$(this).find("#view_details").text("展开详情");
+                $(this).find(".fa").removeClass("to_top").addClass("to_bottom");
+            }
+        });
+
+        $("#alls").bind('click', function () {
+            //if ($(this).is('checked')) {
+            $(".help-page-table").hide();
+            $(".main-content h2").find(".fa").removeClass("to_top").addClass("to_bottom");
+            //}
+            //else {
+            //    $(".help-page-table").show();
+            //    $(".main-content h2").find(".fa").removeClass("to_bottom").addClass("to_top");
+            //}
+        });
+    });
+
+</script>

@@ -1,0 +1,218 @@
+.help-page h1,
+.help-page .h1,
+.help-page h2,
+.help-page .h2,
+.help-page h3,
+.help-page .h3,
+#body.help-page,
+.help-page-table th,
+.help-page-table pre,
+.help-page-table p {
+    font-family: sans-serif, "-webkit-body","Segoe UI Light", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial;
+}
+
+.help-page pre.wrapped {
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+}
+
+.help-page .warning-message-container {
+    margin-top: 20px;
+    padding: 0 10px;
+    color: #525252;
+    background: #EFDCA9; 
+    border: 1px solid #CCCCCC;
+}
+
+.help-page-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0px 0px 20px 0px;
+    border-top: 1px solid #D4D4D4;    
+    background: #d6e9c6;
+    font-size: 16px;
+}
+
+.help-page-table th {
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #D4D4D4;
+    padding: 5px 6px 5px 6px;
+}
+
+.help-page-table td {
+    border-bottom: 1px solid #D4D4D4;
+    padding: 10px 8px 10px 8px;
+    vertical-align: top;
+}
+
+.help-page-table pre,
+.help-page-table p {
+    margin: 0px;
+    padding: 0px;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+
+.help-page-table tbody tr:hover td {
+    background-color: #fbeed5;
+}
+/**/
+
+.help-page-table1 {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0px 0px 20px 0px;
+    border-top: 1px solid #D4D4D4;    
+    background: #fbeed5;
+    font-size: 16px;
+}
+
+.help-page-table1 th {
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #D4D4D4;
+    padding: 5px 6px 5px 6px;
+}
+
+.help-page-table1 td {
+    border-bottom: 1px solid #D4D4D4;
+    padding: 5px 8px 5px 8px;
+    vertical-align: top;
+}
+
+.help-page-table1 pre,
+.help-page-table1 p {
+    margin: 0px;
+    padding: 0px;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+
+.help-page-table1 tbody tr:hover td {
+    background-color: #fbeed5;
+}
+
+.help-page a:hover {
+    background-color: transparent;
+}
+
+.help-page .sample-header {
+    border: 2px solid #D4D4D4;
+    background: #468847;
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border-bottom: none;
+    display: inline-block;
+    margin: 10px 0px 0px 0px;
+}
+
+.help-page .sample-content {
+    display: block;
+    border-width: 0;
+    padding: 15px 20px;
+    background: #FFFFFF;
+    border: 2px solid #D4D4D4;
+    margin: 0px 0px 10px 0px;
+}
+
+.help-page .api-name {
+    width: 40%;
+}
+.help-page .api-name .sp{
+    background: #c09853;
+    margin-right: 10px;    
+    color: #fff;
+    padding: 1px 5px;
+}
+.help-page .api-documentation {
+    width: 60%;
+}
+
+.help-page .parameter-name {
+    width: 20%;
+}
+
+.help-page .parameter-documentation {
+    width: 40%;
+}
+
+.help-page .parameter-type {
+    width: 20%;
+}
+
+.help-page .parameter-annotations {
+    width: 20%;
+}
+
+.help-page h1,
+.help-page .h1 {
+    font-size: 36px;
+    line-height: normal;
+}
+
+.help-page h2,
+.help-page .h2 {
+    font-size: 24px;    
+    background: #f5f5f5;
+    padding: 10px;
+    margin-bottom:0;
+}
+.help-page .zs{    
+    background: #f5f5f5;
+    padding: 10px;
+    margin-bottom:0;font-size: 16px;padding-bottom: 0;}
+
+.has-up{display: inline-block;
+    border-left: 10px solid #f5f5f5;
+    border-top: 8px solid #f5f5f5;
+    border-right: 10px solid #f5f5f5;
+    border-bottom: 8px solid #b94a48;
+    float: right;}
+.has-down{display: inline-block;
+    border-left: 10px solid #f5f5f5;
+    border-top: 8px solid #f5f5f5;
+    border-right: 10px solid #f5f5f5;
+    border-bottom: 8px solid #b94a48;
+    float: right;}
+
+.to_top {float: right;display: inline-block;cursor:pointer;margin-top: 10px;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid skyblue;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+.to_bottom {float: right;
+            width: 0;display: inline-block;cursor:pointer;margin-top: 10px;
+            height: 0;
+            border-top: 10px solid skyblue;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+.help-page h3,
+.help-page .h3 {
+    font-size: 20px;
+}
+
+#body.help-page {
+    font-size: 14px;
+    line-height: 143%;
+    color: #333;
+    margin-top: 20px;
+}
+
+.help-page a {
+    color: #428bca;
+    text-decoration: none;
+}
+.help-page a:hover {
+    text-decoration: underline;
+}
