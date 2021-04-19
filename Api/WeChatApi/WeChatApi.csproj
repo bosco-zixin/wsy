@@ -49,9 +49,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BLL\BLL.csproj">
+      <Project>{e4dd117d-7de2-4ba2-bae7-ccaa4d5abc6d}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.csproj">
+      <Project>{303cd90b-eeb8-4c97-a929-78ed546f1718}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Model\Model.csproj">
       <Project>{E5F0B6A1-A315-45B1-8C8B-7AF4C6964E82}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaseApi\BaseApi.csproj">
+      <Project>{2f935c84-7021-43a3-9c4a-ef2950f2a710}</Project>
+      <Name>BaseApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,11 @@
             微信控制器
             </summary>
         </member>
+        <member name="M:WeChatApi.WeChatController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:WeChatApi.WeChatController.AddRepair(Model.WeChat.RepairAddDto)">
             <summary>
             添加报修

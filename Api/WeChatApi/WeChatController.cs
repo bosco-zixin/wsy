@@ -5,14 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WebApi;
 
 namespace WeChatApi
 {
     /// <summary>
     /// 微信控制器
     /// </summary>
-    public class WeChatController : ApiController
+    public class WeChatController : BaseController
     {
+        ResInfo resInfo = new ResInfo();
+        BLL.WeChat.Repair bll = null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public WeChatController()
+        {
+            bll = new BLL.WeChat.Repair(connStr);
+        }
+
         /// <summary>
         /// 添加报修
         /// </summary>
@@ -20,9 +31,8 @@ namespace WeChatApi
         [HttpPost]
         public ResInfo AddRepair(Model.WeChat.RepairAddDto RepairDto)
         {
-            ResInfo resInfo = new ResInfo();
-    
-
+          
+       
             return resInfo;
         }
 
@@ -34,8 +44,8 @@ namespace WeChatApi
         [HttpPost]
         public ResInfo QueryRepairList(Model.WeChat.RepairListDto RepairDto)
         {
-            ResInfo resInfo = new ResInfo();
-
+         
+         
 
             return resInfo;
         }
@@ -47,8 +57,8 @@ namespace WeChatApi
         [HttpGet]
         public ResInfo GetRepairDetail(string ServiceID)
         {
-            ResInfo resInfo = new ResInfo();
-
+        
+       
 
             return resInfo;
         }
