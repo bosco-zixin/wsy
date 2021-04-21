@@ -14,63 +14,15 @@ namespace Model.WeChat
         /// <summary>
         /// 
         /// </summary>
-        public string AreaID  { get;set; }
+        public string AreaID { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string NodeID { get;set; }
+        public string NodeID { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string Address { get;set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ContactPerson { get;set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ContactTel { get;set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ServiceNote { get;set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Picture1 { get;set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Picture2 { get;set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Picture3 { get;set; }     
-        /// <summary>
-        /// 是否反馈 0不1电话反馈
-        /// </summary>
-        public byte ISFeedback { get; set; }
-            
-    }
-
-    /// <summary>
-    /// 报修列表请求实体
-    /// </summary>
-    public class RepairListDto
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ServiceSer { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string CreateTimeS { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string CreateTimeE { get; set; }
+        public string Address { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -86,11 +38,11 @@ namespace Model.WeChat
         /// <summary>
         /// 
         /// </summary>
-        public int PageIndex { get; set; }
+        public string Picture1 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int PageSize { get; set; }
+        public string Picture2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -99,6 +51,48 @@ namespace Model.WeChat
         /// 是否反馈 0不1电话反馈
         /// </summary>
         public byte ISFeedback { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Memo { get; set; }
+    }
 
+    /// <summary>
+    /// 报修列表请求实体
+    /// </summary>
+    public class RepairListDto
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string AreaID { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ServiceSer { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CreateTimeS { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CreateTimeE { get; set; }
+         /// <summary>
+        /// 
+        /// </summary>
+        public string ServiceNote { get; set; }
+        /// <summary>
+        ///  -1:'禁用' 0:'未受理'1:'已派工' 3:'已关闭'
+        /// </summary>
+        public int? Sign { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int PageIndex { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int PageSize { get; set; }
     }
 }

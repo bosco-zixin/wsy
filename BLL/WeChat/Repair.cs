@@ -27,10 +27,15 @@ namespace BLL.WeChat
             return dal.AddRepair(repairDto);
         }
 
-        public DataTable QueryRepairList(Model.WeChat.RepairListDto repairDto)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repairDto"></param>
+        /// <param name="doCount"></param>
+        public DataTable QueryRepairList(Model.WeChat.RepairListDto repairDto, out int doCount)
         {
             DataTable dt = new DataTable();
-            DataSet ds = dal.QueryRepairList(repairDto);
+            DataSet ds = dal.QueryRepairList(repairDto, out doCount);
             if (ds != null && ds.Tables.Count > 0)
             {
                 dt = ds.Tables[0];

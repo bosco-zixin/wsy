@@ -1,11 +1,7 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
 using WebApi;
+using System.Web.Http;
+using System.Data;
 
 namespace WeChatApi
 {
@@ -16,6 +12,7 @@ namespace WeChatApi
     {
         ResInfo resInfo = new ResInfo();
         BLL.WeChat.Repair bll = null;
+
         /// <summary>
         /// 
         /// </summary>
@@ -31,11 +28,9 @@ namespace WeChatApi
         [HttpPost]
         public ResInfo AddRepair(Model.WeChat.RepairAddDto RepairDto)
         {
-          
-       
+            bll.AddRepair(RepairDto);
             return resInfo;
         }
-
 
         /// <summary>
         /// 报修列表
@@ -44,9 +39,12 @@ namespace WeChatApi
         [HttpPost]
         public ResInfo QueryRepairList(Model.WeChat.RepairListDto RepairDto)
         {
-         
-         
-
+            int rows = 0;
+            DataTable dt = bll.QueryRepairList(RepairDto,out rows);
+            ResDataDto resDataDto = new ResDataDto();
+            resDataDto.Rows = dt;
+            resDataDto.Records = rows;
+            resInfo.ResData = resDataDto;
             return resInfo;
         }
 
@@ -57,12 +55,14 @@ namespace WeChatApi
         [HttpGet]
         public ResInfo GetRepairDetail(string ServiceID)
         {
-        
-       
-
+            DataTable dt = bll.GetRepairDetail(ServiceID);
+            ResDataDto resDataDto = new ResDataDto();
+            resDataDto.Rows = dt;
+            resDataDto.Records = dt.Rows.Count;
+            resInfo.ResData = resDataDto;
             return resInfo;
         }
-        
+
 
     }
 }

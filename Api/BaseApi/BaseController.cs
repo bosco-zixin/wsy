@@ -1,9 +1,7 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -29,10 +27,24 @@ namespace WebApi
         [HttpGet]
         public ResInfo UpLoadFile()
         {
+            string sourcePath = string.Empty;
             ResInfo resInfo = new ResInfo();
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+            HttpRequestBase request = context.Request;         
+            string relativePath = "~/UpLoad/" + DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString();
+            string tempFileName = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            string filePath = System.Web.Hosting.HostingEnvironment.MapPath(relativePath);
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string extension = System.IO.Path.GetExtension(request.Files[0].FileName);
+            sourcePath = filePath + tempFileName+ extension;           
+            request.Files[0].SaveAs(sourcePath);
 
-
+            resInfo.ResMsg = relativePath + tempFileName+ extension;
             return resInfo;
+
         }
     }
 }
