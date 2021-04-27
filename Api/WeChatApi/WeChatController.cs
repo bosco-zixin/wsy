@@ -11,15 +11,6 @@ namespace WeChatApi
     public class WeChatController : BaseController
     {
         ResInfo resInfo = new ResInfo();
-        BLL.WeChat.Repair bll = null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public WeChatController()
-        {
-            bll = new BLL.WeChat.Repair(connStr);
-        }
 
         /// <summary>
         /// 添加报修
@@ -28,6 +19,7 @@ namespace WeChatApi
         [HttpPost]
         public ResInfo AddRepair(Model.WeChat.RepairAddDto RepairDto)
         {
+            BLL.WeChat.Repair bll = new BLL.WeChat.Repair(connStr);
             bll.AddRepair(RepairDto);
             return resInfo;
         }
@@ -40,7 +32,8 @@ namespace WeChatApi
         public ResInfo QueryRepairList(Model.WeChat.RepairListDto RepairDto)
         {
             int rows = 0;
-            DataTable dt = bll.QueryRepairList(RepairDto,out rows);
+            BLL.WeChat.Repair bll = new BLL.WeChat.Repair(connStr);
+            DataTable dt = bll.QueryRepairList(RepairDto, out rows);
             ResDataDto resDataDto = new ResDataDto();
             resDataDto.Rows = dt;
             resDataDto.Records = rows;
@@ -55,6 +48,7 @@ namespace WeChatApi
         [HttpGet]
         public ResInfo GetRepairDetail(string ServiceID)
         {
+            BLL.WeChat.Repair bll = new BLL.WeChat.Repair(connStr);
             DataTable dt = bll.GetRepairDetail(ServiceID);
             ResDataDto resDataDto = new ResDataDto();
             resDataDto.Rows = dt;
@@ -63,6 +57,29 @@ namespace WeChatApi
             return resInfo;
         }
 
-
+        /// <summary>
+        /// 缴费
+        /// </summary>
+        /// <param name="ChargeDto">参数</param>      
+        [HttpPost]
+        public ResInfo PayCharge(Model.WeChat.Charge ChargeDto)
+        {
+            string errMsg = "";
+            Model.WeChat.Card card = new Model.WeChat.Card();
+            BLL.WeChat.Charge bll = new BLL.WeChat.Charge(connStr);
+            bool flag = bll.PayCharge(ChargeDto, out errMsg, out card);
+            if (flag)
+            {
+                resInfo.ResCode = 1;
+                resInfo.ResMsg = errMsg;
+                resInfo.ResData = card;
+            }
+            else
+            {
+                resInfo.ResCode = -1;
+                resInfo.ResMsg = errMsg;
+            }
+            return resInfo;
+        }
     }
 }

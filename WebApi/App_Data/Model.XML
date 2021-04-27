@@ -89,6 +89,296 @@
             列表数据
             </summary>
         </member>
+        <member name="T:Model.WeChat.CardIdent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardIdent.FacyID">
+            <summary>
+            厂家编号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardIdent.SysCode">
+            <summary>
+            系统号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardIdent.CardID">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardIdent.AreaCode">
+            <summary>
+            大区号
+            </summary>
+        </member>
+        <member name="T:Model.WeChat.Card">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.FacyID">
+            <summary>
+            厂家编号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.SysCode">
+            <summary>
+            系统号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.CardID">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.AreaCode">
+            <summary>
+            区域号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.CardVer">
+            <summary>
+            卡版本号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.MeterCount">
+            <summary>
+            卡中表数量
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Card.MeterList">
+            <summary>
+            操作表列表
+            </summary>
+        </member>
+        <member name="T:Model.WeChat.CardMeter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.IndexNo">
+            <summary>
+            卡表序号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.OperType">
+            <summary>
+            操作类型，1：加表；2：收费；3：补卡；4：换表；99：读卡
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.MeterType">
+            <summary>
+            表型
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.MeterCode">
+            <summary>
+            表号
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.ParamVer">
+            <summary>
+            参数版本
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.ChargeMode">
+            <summary>
+            表模式，0：数量；1：月阶梯；2：年阶梯
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.FirstAlert">
+            <summary>
+            一级报警
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.SecdAlert">
+            <summary>
+            二级报警
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.HFConst">
+            <summary>
+            电表常数
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.PowerLoad">
+            <summary>
+            允许负荷
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.RestLoad">
+            <summary>
+            允许阻性负载
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.Hoard">
+            <summary>
+            允许囤积量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.Overdraft">
+            <summary>
+            允许透支量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.Multiple">
+            <summary>
+            倍率
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.BuyTimes">
+            <summary>
+            购买次数
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.ThisBuy">
+            <summary>
+            本次购买量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.ThisBuyTime">
+            <summary>
+            本次购买时间
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.BuyTotal">
+            <summary>
+            总购买量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepNum1">
+            <summary>
+            一阶数量
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepNum2">
+            <summary>
+            二阶数量
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepNum3">
+            <summary>
+            三阶数量
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepPrice1">
+            <summary>
+            一阶价格
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepPrice2">
+            <summary>
+            二阶价格
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepPrice3">
+            <summary>
+            三阶价格
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepPrice4">
+            <summary>
+            四阶价格
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.StepPriceStartTime">
+            <summary>
+            阶梯价格起始时间
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.HeatStartTime">
+            <summary>
+            供热起始时间
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.HeatEndTime">
+            <summary>
+            供热结束时间
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.UsedTotal">
+            <summary>
+            累计使用量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.Surplus">
+            <summary>
+            剩余量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.MonFreezeNums">
+            <summary>
+            剩余量/金额
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.InsertTime">
+            <summary>
+            插表时间
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.HardStatus">
+            <summary>
+            硬件状态，1：正常；2：异常
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.RunStatus">
+            <summary>
+            运行状态，1：运行；2：停止
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.CardMeter.ReadStatus">
+            <summary>
+            读卡状态，1：成功；2：未插表；99：未读卡
+            </summary>
+        </member>
+        <member name="T:Model.WeChat.Charge">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.NodeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.OwnerID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.PayTypeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.FeeInfos">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.DueTotal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.FactTotal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.ProcedureFee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.WeChat.Charge.PaySerialNo">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Model.WeChat.RepairAddDto">
             <summary>
             添加保修实体
