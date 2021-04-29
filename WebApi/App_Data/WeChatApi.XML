@@ -27,6 +27,22 @@
             </summary>
             <param name="ServiceID">参数</param>      
         </member>
+        <member name="M:WeChatApi.WeChatController.InputMeterDosage(System.Int64,System.Decimal,System.Decimal)">
+            <summary>
+            录量
+            </summary>
+            <param name="MetID">参数</param>      
+            <param name="Num">参数</param>      
+            <param name="DedNum">参数</param>      
+        </member>
+        <member name="M:WeChatApi.WeChatController.CalcFee(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            算费
+            </summary>
+            <param name="NodeID">参数</param>      
+            <param name="MetID">参数</param>      
+            <param name="DosageID">参数</param>      
+        </member>
         <member name="M:WeChatApi.WeChatController.PayCharge(Model.WeChat.Charge)">
             <summary>
             缴费

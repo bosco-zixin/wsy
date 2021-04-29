@@ -58,6 +58,40 @@ namespace WeChatApi
         }
 
         /// <summary>
+        /// 录量
+        /// </summary>
+        /// <param name="MetID">参数</param>      
+        /// <param name="Num">参数</param>      
+        /// <param name="DedNum">参数</param>      
+        [HttpGet]
+        public ResInfo InputMeterDosage(long MetID, decimal Num, decimal DedNum)
+        {
+            BLL.WeChat.Charge bll = new BLL.WeChat.Charge(connStr);
+            long iDosageID = bll.InputMeterDosage(MetID, Num, DedNum, 0);
+            resInfo.ResCode = 1;
+            resInfo.ResData = iDosageID;
+
+            return resInfo;
+        }
+
+        /// <summary>
+        /// 算费
+        /// </summary>
+        /// <param name="NodeID">参数</param>      
+        /// <param name="MetID">参数</param>      
+        /// <param name="DosageID">参数</param>      
+        [HttpGet]
+        public ResInfo CalcFee(long NodeID, long MetID, long DosageID)
+        {
+            BLL.WeChat.Charge bll = new BLL.WeChat.Charge(connStr);
+            DataTable dt = bll.CalcFee(NodeID, MetID, DosageID);
+            resInfo.ResCode = 1;
+            resInfo.ResData = dt;
+
+            return resInfo;
+        }
+
+        /// <summary>
         /// 缴费
         /// </summary>
         /// <param name="ChargeDto">参数</param>      

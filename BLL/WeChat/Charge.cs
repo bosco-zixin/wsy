@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace BLL.WeChat
             dal = new DAL.WeChat.Charge(connStr);
         }
 
-        public bool PayCharge(Model.WeChat.Charge chargeDto, out string errMsg,out Model.WeChat.Card card)
+        public bool PayCharge(Model.WeChat.Charge chargeDto, out string errMsg, out Model.WeChat.Card card)
         {
             int ret = 0;
             string chrgID = "";
@@ -75,6 +76,31 @@ namespace BLL.WeChat
                 }
             }
             return ret == 1;
+        }
+
+
+        public long InputMeterDosage(long iMetID, decimal fNum, decimal fDedNum, int iOperID)
+        {
+            long iDosageID = 0;
+            dal.InputMeterDosage(iMetID, fNum, fDedNum, iOperID, ref iDosageID);
+            return iDosageID;
+        }
+
+        public DataTable CalcFee(long iNodeID, long iMetID, long iDosageID)
+        {
+            DataTable dt = new DataTable();
+            dal.DeleteMeterTempFee(iMetID);
+
+            int r = dal.CreateMeterFee(iDosageID, 0);
+            if (r == 1)
+            {
+                DataSet ds = dal.GetMeterFee(iNodeID, iMetID);
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+            return dt;
         }
     }
 }

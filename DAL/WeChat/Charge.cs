@@ -102,7 +102,7 @@ namespace DAL.WeChat
                         new SqlParameter("@P_OperID", SqlDbType.SmallInt, 2),
                         new SqlParameter("@P_ChrgID", SqlDbType.VarChar, 30)
                       };
-           
+
             parameter[0].Value = chargeDto.NodeID;
             parameter[1].Value = chargeDto.OwnerID;
             parameter[2].Value = chargeDto.PayTypeID;
@@ -111,21 +111,21 @@ namespace DAL.WeChat
             parameter[5].Value = chargeDto.ProcedureFee;
             parameter[6].Value = DBNull.Value;
             if (!string.IsNullOrEmpty(chargeDto.PaySerialNo))
-            { 
+            {
                 parameter[7].Value = chargeDto.PaySerialNo;
             }
             else
-            { 
+            {
                 parameter[7].Value = DBNull.Value;
             }
             parameter[8].Value = DBNull.Value;
             parameter[9].Value = "";
-           // parameter[10].Value = iOperID;
+            // parameter[10].Value = iOperID;
             parameter[11].Direction = ParameterDirection.Output;
             result = sqlHelper.RunProcedure("DBO.P_ChargeBalance", parameter);
             if (result == 1)
             {
-                sChrgID = parameter[11].Value.ToString(); 
+                sChrgID = parameter[11].Value.ToString();
             }
             return result;
         }
@@ -378,7 +378,7 @@ namespace DAL.WeChat
                     }
                     else
                     {
-                        mdlCardMeter.ReadStatus = "1"; 
+                        mdlCardMeter.ReadStatus = "1";
                     }
                     mdlCard.MeterList.Add(mdlCardMeter);
                 }
@@ -452,6 +452,107 @@ namespace DAL.WeChat
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iMetID"></param>
+        /// <param name="fNum"></param>
+        /// <param name="fDedNum"></param>
+        /// <param name="sEndDate"></param>
+        /// <param name="iOperID"></param>
+        /// <param name="sRemark"></param>
+        /// <param name="iDosageID"></param>
+        /// <returns></returns>
+        public int InputMeterDosage(long iMetID, decimal fNum, decimal fDedNum, int iOperID, ref long iDosageID)
+        {
+            int result = 0;
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+               new SqlParameter("@P_OperType", SqlDbType.SmallInt, 2),
+               new SqlParameter("@P_MetID", SqlDbType.BigInt, 8),
+               new SqlParameter("@P_Num", SqlDbType.Decimal, 9),
+               new SqlParameter("@P_DedNum", SqlDbType.Decimal, 9),
+               new SqlParameter("@P_EndDate", SqlDbType.VarChar, 10),
+               new SqlParameter("@P_OperID", SqlDbType.SmallInt, 2),
+               new SqlParameter("@P_WriteCardStatus", SqlDbType.SmallInt, 2),
+               new SqlParameter("@P_Remark", SqlDbType.VarChar, 200),
+               new SqlParameter("@P_DosageID", SqlDbType.BigInt, 8),
+             };
+            parameter[0].Value = 1;
+            parameter[1].Value = iMetID;
+            parameter[2].Value = fNum;
+            parameter[3].Value = fDedNum;
+            parameter[4].Value = DateTime.Now.ToString("yyyy-MM-dd");
+            parameter[5].Value = iOperID;
+            parameter[6].Value = 1;
+            parameter[7].Value = "";
+            parameter[8].Direction = ParameterDirection.InputOutput;
+            result = sqlHelper.RunProcedure("DBO.P_InputMeterDosage", parameter);
+            if (result == 1)
+                iDosageID = long.Parse(parameter[8].Value.ToString());
+            return result;
+        }
+
+        public long DeleteMeterTempFee(long iMetID)
+        {
+            long dosageId = 0;
+            string strSql = string.Format("SELECT DosageID FROM MeterDosage WHERE MetID = {0} AND Status = 0", iMetID);
+            object obj = sqlHelper.GetSingle(strSql);
+            if (obj != null)
+            {
+                dosageId = Convert.ToInt64(obj);
+            }
+            return dosageId;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iOperType"></param>
+        /// <param name="iDosageID"></param>
+        /// <param name="bIsLateFee"></param>
+        /// <param name="sLateFeeDate"></param>
+        /// <param name="bIsChecked"></param>
+        /// <param name="iOperID"></param>
+        /// <param name="sRemark"></param>
+        /// <returns></returns>
+        public int CreateMeterFee(long dosageId, int iOperID)
+        {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@P_OperType", SqlDbType.SmallInt, 2),
+                new SqlParameter("@P_DosageID", SqlDbType.BigInt, 8),
+                new SqlParameter("@P_IsLateFee", SqlDbType.SmallInt, 2),
+                new SqlParameter("@P_LateFeeDate", SqlDbType.VarChar, 10),
+                new SqlParameter("@P_IsChecked", SqlDbType.SmallInt, 2),
+                new SqlParameter("@P_OperID", SqlDbType.SmallInt, 2),
+                new SqlParameter("@P_Remark", SqlDbType.VarChar, 200),
+              };
+            parameter[0].Value = 1;
+            parameter[1].Value = dosageId;
+            parameter[2].Value = 0;
+            parameter[3].Value = DBNull.Value;
+            parameter[4].Value = 0;
+            parameter[5].Value = iOperID;
+            parameter[6].Value = "";
+            return sqlHelper.RunProcedure("DBO.P_CreateMeterFee", parameter);
+        }
+
+        public DataSet GetMeterFee(long iNodeID, long iMetID)
+        {
+            string strSql = string.Format(@"SELECT A.FeeID, A.ChrgItemTypeID, A.ChrgItemID, A.ChrgItemName, A.Mon, A.Num, A.FeeAmount, A.LateFee, A.DedAmount, A.DueAmount, 
+                              A.FactAmount, A.UseBalance, A.MetID, A.MetCode, A.MetTypeName, A.InstallSite, CASE WHEN A.ChrgDate <= CONVERT(VARCHAR(10), GETDATE(), 120) THEN 1 ELSE 0 END AS IsSelected, 
+                              CASE WHEN MIN(B.Price) <> MAX(B.Price) THEN CONVERT(VARCHAR(15), MIN(B.Price)) + '~' + CONVERT(VARCHAR(15), MAX(B.Price)) ELSE CONVERT(VARCHAR(15), MAX(B.Price)) END AS Price
+                            FROM V_ChargeFee A
+                              INNER JOIN ChargeFeeDetail B ON A.FeeID = B.FeeID
+                            WHERE A.NodeID = {0} AND A.Status = 6 AND A.MetID ={1}
+                            GROUP BY A.FeeID, A.ChrgItemTypeID, A.ChrgItemID, A.ChrgItemName, A.Mon, A.Num, A.FeeAmount, A.LateFee, A.DedAmount, A.DueAmount, 
+                              A.FactAmount, A.UseBalance, A.MetID, A.MetCode, A.MetTypeName, A.InstallSite, A.ChrgDate
+                            ORDER BY A.ChrgItemTypeID, A.ChrgItemID, A.ChrgItemName, A.FeeID", iNodeID, iMetID);
+            DataSet ds = sqlHelper.Query(strSql);
+            return ds;
         }
     }
 }
